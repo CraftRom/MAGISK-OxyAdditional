@@ -14,11 +14,6 @@ abort() {
 
 cleanup() {
   rm -rf $MODPATH/common 2>/dev/null
-  ui_print " "
-  ui_print "    **************************************"
-  ui_print "    *   MMT Extended by Zackptg5 @ XDA   *"
-  ui_print "    **************************************"
-  ui_print " "
   $DEBUG && debug_log
 }
 
@@ -52,17 +47,29 @@ debug_log() {
 }
 
 device_check() {
-  local PROP=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+  local opt=`getopt -o dm -- "$@"` type=device
+  eval set -- "$opt"
+  while true; do
+    case "$1" in
+      -d) local type=device; shift;;
+      -m) local type=manufacturer; shift;;
+      --) shift; break;;
+      *) abort "Invalid device_check argument $1! Aborting!";;
+    esac
+  done
+  local prop=$(echo "$1" | tr '[:upper:]' '[:lower:]')
   for i in /system /vendor /odm /product; do
     if [ -f $i/build.prop ]; then
-      for j in "ro.product.device" "ro.build.product" "ro.product.vendor.device" "ro.vendor.product.device"; do
-        [ "$(sed -n "s/^$j=//p" $i/build.prop 2>/dev/null | head -n 1 | tr '[:upper:]' '[:lower:]')" == "$PROP" ] && return 0
+      for j in "ro.product.$type" "ro.build.$type" "ro.product.vendor.$type" "ro.vendor.product.$type"; do
+        [ "$(sed -n "s/^$j=//p" $i/build.prop 2>/dev/null | head -n 1 | tr '[:upper:]' '[:lower:]')" == "$prop" ] && return 0
       done
+      [ "$type" == "device" ] && [ "$(sed -n "s/^"ro.build.product"=//p" $i/build.prop 2>/dev/null | head -n 1 | tr '[:upper:]' '[:lower:]')" == "$prop" ] && return 0
     fi
   done
   return 1
 }
 
+# Run addons 	
 run_addons() {
   local OPT=`getopt -o mpi -- "$@"` NAME PNAME
   eval set -- "$OPT"
@@ -85,8 +92,8 @@ run_addons() {
 }
 
 cp_ch() {
-  local OPT=`getopt -o inr -- "$@"` BAK=true UBAK=true FOL=false
-  eval set -- "$OPT"
+  local opt=`getopt -o nr -- "$@"` BAK=true UBAK=true FOL=false
+  eval set -- "$opt"
   while true; do
     case "$1" in
       -n) UBAK=false; shift;;
@@ -150,6 +157,12 @@ prop_process() {
   done < $1
 }
 
+# Credits
+ui_print "**************************************"
+ui_print "*   MMT Extended by Zackptg5 @ XDA   *"
+ui_print "**************************************"
+ui_print " "
+
 # Check for min/max api version
 [ -z $MINAPI ] || { [ $API -lt $MINAPI ] && abort "! Your system API of $API is less than the minimum api of $MINAPI! Aborting!"; }
 [ -z $MAXAPI ] || { [ $API -gt $MAXAPI ] && abort "! Your system API of $API is greater than the maximum api of $MAXAPI! Aborting!"; }
@@ -158,7 +171,6 @@ prop_process() {
 [ $API -lt 26 ] && DYNLIB=false
 [ -z $DYNLIB ] && DYNLIB=false
 [ -z $DEBUG ] && DEBUG=false
-[ -e "$PERSISTDIR" ] && PERSISTMOD=$PERSISTDIR/magisk/$MODID
 INFO=$NVBASE/modules/.$MODID-files
 ORIGDIR="$MAGISKTMP/mirror"
 if $DYNLIB; then
@@ -182,9 +194,8 @@ fi
 # Debug
 if $DEBUG; then
   ui_print "- Debug mode"
-  LOGFILE=/storage/emulated/0/Download/$MODID-debug
-  ui_print "  Debug log will be written to: $LOGFILE.log"
-  exec 2>$LOGFILE.log
+  ui_print "  Module install log will include debug info"
+  ui_print "  Be sure to save it after module install"
   set -x
 fi
 

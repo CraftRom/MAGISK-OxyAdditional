@@ -1,6 +1,7 @@
 id=OxyAdditional
 name=OxyAdditional
-version=v0.7
-versionCode=07
+version=v0.9
+versionCode=09
 author=melles1991
 description=Oxygen OS APP for AOSP. (Weather, Widget, Icon Pack's, Launcher)
+support=https://melles1991.github.io/MAGISK-OxyAdditional/
