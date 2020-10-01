@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This XML file declares which platform apps that need to access internal APIs.
+-->
+<config>
+  <hidden-api-whitelisted-app package="net.oneplus.launcher" />
+  <hidden-api-whitelisted-app package="com.oneplus.deskclock" />
+  <hidden-api-whitelisted-app package="net.oneplus.weather" />
+  <hidden-api-whitelisted-app package="net.oneplus.widget" />
+</config>
