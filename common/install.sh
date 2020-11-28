@@ -13,7 +13,7 @@ else
   rm -rf $MODPATH/system/fonts
   rm -rf $MODPATH/system/etc/fonts.xml
 fi
-
+ui_print "   Check Android version..."
 if [ $API -ge 29 ]; then
 ui_print "   Do you want install all app?"
 ui_print "   Vol Up = Yes, Vol Down = No"
@@ -92,34 +92,11 @@ else
    rm -rf $MODPATH/system/product/overlay/AccentColorOrchid
    rm -rf $MODPATH/system/product/overlay/AccentColorPurple
    rm -rf $MODPATH/system/product/overlay/AccentColorSpace
-   rm -rf $MODPATH/system/product/overlay/DisplayCutoutEmulationCorner
-   rm -rf $MODPATH/system/product/overlay/DisplayCutoutEmulationDouble
-   rm -rf $MODPATH/system/product/overlay/DisplayCutoutEmulationTall
    rm -rf $MODPATH/system/product/overlay/FontNotoSerifSource
-   rm -rf $MODPATH/system/product/overlay/IconPackCircularAndroid
-   rm -rf $MODPATH/system/product/overlay/IconPackCircularLauncher
-   rm -rf $MODPATH/system/product/overlay/IconPackCircularSettings
-   rm -rf $MODPATH/system/product/overlay/IconPackCircularSystemUI
-   rm -rf $MODPATH/system/product/overlay/IconPackCircularThemePicker
-   rm -rf $MODPATH/system/product/overlay/IconPackFilledAndroid
-   rm -rf $MODPATH/system/product/overlay/IconPackFilledLauncher
-   rm -rf $MODPATH/system/product/overlay/IconPackFilledSettings
-   rm -rf $MODPATH/system/product/overlay/IconPackFilledSystemUI
-   rm -rf $MODPATH/system/product/overlay/IconPackFilledThemePicker
-   rm -rf $MODPATH/system/product/overlay/IconPackRoundedAndroid
-   rm -rf $MODPATH/system/product/overlay/IconPackRoundedLauncher
-   rm -rf $MODPATH/system/product/overlay/IconPackRoundedSettings
-   rm -rf $MODPATH/system/product/overlay/IconPackRoundedSystemUI
    rm -rf $MODPATH/system/product/overlay/IconShapeRoundedRect
    rm -rf $MODPATH/system/product/overlay/IconShapeSquare
    rm -rf $MODPATH/system/product/overlay/IconShapeSquircle
-   rm -rf $MODPATH/system/product/overlay/IconShapeTeardrop
-   rm -rf $MODPATH/system/product/overlay/NavigationBarMode2Button
-   rm -rf $MODPATH/system/product/overlay/NavigationBarMode3Button
-   rm -rf $MODPATH/system/product/overlay/NavigationBarModeGestural
-   rm -rf $MODPATH/system/product/overlay/NavigationBarModeGesturalExtraWideBack
-   rm -rf $MODPATH/system/product/overlay/NavigationBarModeGesturalNarrowBack
-   rm -rf $MODPATH/system/product/overlay/NavigationBarModeGesturalWideBack 
+   rm -rf $MODPATH/system/product/overlay/IconShapeTeardrop 
 fi
 
 fi
