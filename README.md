@@ -16,6 +16,16 @@ Magisk Module that will turn your Android phone into a OnePlus device by adding:
 2. Reboot.
 3. Enjoy!
 
+### V 1.2
+* OnePlus Launcher to 4.6.5
+* Update MMT-Extended-Addons - Volume-Key-Selector
+
+### V 1.0
+* Updated Widget app
+* Updated Weather app
+* Removed unnecessary overlays
+* Added check for Android version
+
 ### V 0.9
 * Update MMT-Extended to v1.6
 * Update install script 
