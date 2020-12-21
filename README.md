@@ -1,5 +1,5 @@
 * **Date**: 2020-10-03;
-* **Version**: 0.9;
+* **Version**: 1.3;
 * **Maintainer**: @mrshterben;
 
 Magisk Module that will turn your Android phone into a OnePlus device by adding:
@@ -15,6 +15,18 @@ Magisk Module that will turn your Android phone into a OnePlus device by adding:
 1. Flash this module.
 2. Reboot.
 3. Enjoy!
+
+### V 1.3
+- Update OPLauncher
+* Rebased/Crossport 4.6.5 to 5.0.0
+* Support Accent, Sytem Light Mode and DarkMode
+* Hide Swipe Up Icon by Default
+* Optimised Rounded Corner
+* Linear Dot Animation Optimised Value
+* Added More Grid Option
+* Fixed tinted Ram TextView
+* Fixed Notification Icon Badging not Showing
+* General bug fixes.
 
 ### V 1.2
 * OnePlus Launcher to 4.6.5
